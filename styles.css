@@ -1,69 +1,68 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f8ff; /* Color de fondo */
-    text-align: center; /* Centrar texto */
-    padding: 20px;
+    font-family: Arial, sans-serif; /* Usamos Arial como fuente principal */
+    background-color: #f0f8ff; /* Color de fondo, un azul claro */
+    text-align: center; /* Centramos todo el texto en la página */
+    padding: 20px; /* Agregamos un poco de espacio alrededor */
 }
 
 .container {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    max-width: 500px; /* Hacemos el contenedor compacto */
-    margin: 0 auto; /* Centramos el contenedor */
+    background-color: white; /* Fondo blanco para el contenedor */
+    border-radius: 8px; /* Bordes redondeados para un aspecto más suave */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil para dar profundidad */
+    padding: 20px; /* Espacio interno en el contenedor */
+    max-width: 500px; /* Limitamos el ancho del contenedor para que no sea tan grande */
+    margin: 0 auto; /* Centramos el contenedor en la página */
 }
 
 h1 {
-    color: #333;
-    margin-bottom: 20px;
+    color: #333; /* Color del título, un gris oscuro */
+    margin-bottom: 20px; /* Espacio debajo del título */
 }
 
 .input-group {
-    display: flex;
-    flex-direction: row; /* Mantiene los elementos en fila */
-    align-items: center; /* Alinea verticalmente en el centro */
-    margin-bottom: 20px;
+    display: flex; /* Usamos flexbox para alinear los elementos */
+    flex-direction: row; /* Mantener los elementos en una fila */
+    align-items: center; /* Alineamos verticalmente al centro */
+    margin-bottom: 20px; /* Espacio debajo del grupo de entrada */
 }
 
 label {
-    margin-right: 10px; /* Espacio entre la etiqueta y el input */
+    margin-right: 10px; /* Espacio entre la etiqueta y el campo de entrada */
 }
 
 input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 10px; /* Espacio entre el input y el botón */
-    width: 60%; /* Ajustamos el ancho del input */
+    padding: 10px; /* Espacio interno para el campo de entrada */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados para el campo de entrada */
+    margin-right: 10px; /* Espacio entre el campo de entrada y el botón */
+    width: 60%; /* Hacemos el campo de entrada un poco más ancho */
 }
 
 button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff; /* Color del botón */
-    color: white;
-    cursor: pointer;
-    width: 30%; /* Ajustamos el ancho del botón para que sea proporcional */
+    padding: 10px 15px; /* Espacio interno en el botón */
+    border: none; /* Sin borde para el botón */
+    border-radius: 5px; /* Bordes redondeados para el botón */
+    background-color: #007bff; /* Color azul del botón */
+    color: white; /* Color del texto en el botón */
+    cursor: pointer; /* Cambiamos el cursor al pasar sobre el botón */
+    width: 30%; /* Hacemos el botón proporcional al campo de entrada */
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Color más oscuro al pasar el ratón por encima */
 }
 
 #response {
-    margin-top: 20px;
-    padding: 15px;
-    border: 1px solid #a8e5ff;
-    border-radius: 5px;
-    background-color: #e3f6fc;
-    
+    margin-top: 20px; /* Espacio encima de la sección de respuesta */
+    padding: 15px; /* Espacio interno en la respuesta */
+    border: 1px solid #a8e5ff; /* Borde azul claro para la respuesta */
+    border-radius: 5px; /* Bordes redondeados en la sección de respuesta */
+    background-color: #e3f6fc; /* Fondo azul claro para la respuesta */
 }
 
 .container {
-    background-color: #f0f8ff; /* Color del fondo del cuadro */
-    padding: 20px;
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 10px rgb(0, 0, 0);
+    background-color: #f0f8ff; /* Fondo azul claro para el cuadro del contenedor */
+    padding: 20px; /* Espacio interno en el contenedor */
+    border-radius: 10px; /* Bordes redondeados para un aspecto más suave */
+    box-shadow: 10px rgb(0, 0, 0); /* Sombra para dar un efecto de profundidad */
 }
