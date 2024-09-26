@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultor de Clima</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Color de fondo */
+            text-align: center; /* Centrar texto */
+            padding: 20px;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 500px; /* Hacemos el contenedor compacto */
+            margin: 0 auto; /* Centramos el contenedor */
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: row; /* Mantiene los elementos en fila */
+            align-items: center; /* Alinea verticalmente en el centro */
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-right: 10px; /* Espacio entre la etiqueta y el input */
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px; /* Espacio entre el input y el botón */
+            width: 60%; /* Ajustamos el ancho del input */
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff; /* Color del botón */
+            color: white;
+            cursor: pointer;
+            width: 30%; /* Ajustamos el ancho del botón para que sea proporcional */
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Sugerencias de ciudades */
+        .suggestions {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con un poco de transparencia */
+            border: 1px solid #ccc; /* Borde gris claro */
+            border-radius: 5px;
+            z-index: 1000;
+            width: 60%; /* Mantener el mismo ancho que el input */
+            max-height: 150px; /* Altura máxima */
+            overflow-y: auto; /* Agregar desplazamiento si es necesario */
+            left: 20%; /* Centramos con respecto al input */
+        }
+
+        .suggestion-item {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .suggestion-item:hover {
+            background-color: #e0e0e0; /* Fondo gris claro al pasar el ratón */
+        }
+
+        #response {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #a8e5ff;
+            border-radius: 5px;
+            background-color: #e3f6fc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Consulta el clima</h1>
+        <div class="input-group">
+            <label for="city">Ciudad:</label>
+            <input type="text" id="city" placeholder="Ingrese la ciudad">
+            <button id="getWeather">Obtener Clima</button>
+        </div>
+        <div class="suggestions" id="suggestions" style="display: none;"></div>
+        <div id="response"></div>
+    </div>
+
+    <script>
+        let cities = []; // Inicializamos el array de ciudades
+
+        // Cargar las ciudades desde el archivo JSON
+        fetch('cities.json')
+            .then(response => response.json())
+            .then(data => {
+                cities = data; // Asignar la lista de ciudades al array
+            })
+            .catch(error => console.error('Error al cargar las ciudades:', error));
+
+        document.getElementById("city").addEventListener("input", function() {
+            const input = this.value.toLowerCase();
+            const suggestionsDiv = document.getElementById("suggestions");
+            suggestionsDiv.innerHTML = ''; // Limpiar sugerencias previas
+            suggestionsDiv.style.display = 'none'; // Ocultar por defecto
+
+            if (input.length > 1) {
+                const filteredCities = cities.filter(city => city.toLowerCase().startsWith(input));
+                if (filteredCities.length > 0) {
+                    filteredCities.forEach(city => {
+                        const suggestionItem = document.createElement('div');
+                        suggestionItem.className = 'suggestion-item';
+                        suggestionItem.textContent = city;
+                        suggestionItem.onclick = () => {
+                            document.getElementById("city").value = city; // Completar el input
+                            suggestionsDiv.innerHTML = ''; // Limpiar sugerencias
+                            suggestionsDiv.style.display = 'none'; // Ocultar sugerencias
+                        };
+                        suggestionsDiv.appendChild(suggestionItem);
+                    });
+                    suggestionsDiv.style.display = 'block'; // Mostrar sugerencias
+                }
+            }
+        });
+
+        document.getElementById("getWeather").addEventListener("click", function() {
+            const city = document.getElementById("city").value;
+            if (city) {
+                fetch(`/weather?city=${city}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Error en la solicitud');  // Manejo de errores
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        document.getElementById("response").innerText = `El clima en ${city} es: ${data.weather}, con una temperatura de ${data.temperature}°C.`;
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        document.getElementById("response").innerText = "Hubo un problema al obtener el clima.";
+                    });
+            } else {
+                alert("Por favor, ingrese una ciudad.");
+            }
+        });
+    </script>
+</body>
+</html>

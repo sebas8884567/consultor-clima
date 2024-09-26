@@ -1,0 +1,69 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* Color de fondo */
+    text-align: center; /* Centrar texto */
+    padding: 20px;
+}
+
+.container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 500px; /* Hacemos el contenedor compacto */
+    margin: 0 auto; /* Centramos el contenedor */
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: row; /* Mantiene los elementos en fila */
+    align-items: center; /* Alinea verticalmente en el centro */
+    margin-bottom: 20px;
+}
+
+label {
+    margin-right: 10px; /* Espacio entre la etiqueta y el input */
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px; /* Espacio entre el input y el botón */
+    width: 60%; /* Ajustamos el ancho del input */
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* Color del botón */
+    color: white;
+    cursor: pointer;
+    width: 30%; /* Ajustamos el ancho del botón para que sea proporcional */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#response {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #a8e5ff;
+    border-radius: 5px;
+    background-color: #e3f6fc;
+    
+}
+
+.container {
+    background-color: #f0f8ff; /* Color del fondo del cuadro */
+    padding: 20px;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 10px rgb(0, 0, 0);
+}
